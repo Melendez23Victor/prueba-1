@@ -1,0 +1,119 @@
+#include<stdlib.h>
+#include<stdio.h>
+#include<time.h>
+void burbuja();
+void seleccion();
+int main(){
+	int menu;
+		char OpDoWhile;
+	do{
+		printf("\n\tMenu: ");
+		printf("\n\t1.- Metodo burbuja.");
+		printf("\n\t2.- Metodo de seleccion.");
+		printf("\n\t3.- Metodo de inserccion.");
+		printf("\n\t4.- Metodo de Quicksort.");
+		printf("\n\t5.- Metodo de Shell.");
+		printf("\n\tIngrese una opcion: ");
+		scanf("%d",&menu);
+		switch(menu){
+			case 1:
+				burbuja();
+			break;
+			case 2:
+				seleccion();
+			break;
+			case 3:
+				printf("Aun no esta listo el codigo");
+			break;
+			case 4:
+				printf("Aun no esta listo el codigo");
+			break;
+			case 5:
+				printf("Aun no esta listo el codigo");
+			break;
+			default:
+				printf("\n\tOpcion erronea.");
+			break;
+	}
+		
+	printf("\nDesea repetir el programa? y/n: ");
+	scanf("%s",&OpDoWhile);	
+	}while(OpDoWhile=='Y'||OpDoWhile=='y');
+	
+}
+
+
+void burbuja(){
+
+clock_t relojin;
+
+		printf("INICIA TIEMPO:\n");
+relojin = clock();
+
+	int m,menor,i,j,numero=10000,*puntero,aux;
+
+	(numero<1);
+		puntero=(int *)malloc(numero *sizeof(int));
+		
+		
+		for(i=0;i<numero;i++){
+			puntero[i]=rand()%10000;
+	printf(" \n %d",puntero[i]);
+		}
+	printf("\n \nLos numeros ordenados son:\n \n ");
+	for(i=0;i<numero;i++){
+		m=puntero[i];
+		menor=i;
+		for(j=i;j<numero;j++){
+			if(puntero[j]<m){
+				m=puntero[j];
+				menor=j;
+			}
+		}
+		
+		aux=puntero[i];
+		puntero[i]=puntero[menor];
+		puntero[menor]=aux;
+	}
+	for(i=0;i<numero;i++){
+		printf(" \n %d",puntero[i]);
+	}
+
+
+
+relojin = clock() -relojin;
+printf("PARA TIEMPO:\n");
+printf("Numero de clicks %ld clicks (El metodo burbuja tarda %f segundos)\n", relojin, ((float)relojin /CLOCKS_PER_SEC));
+}
+
+void seleccion(){
+	clock_t relojin;
+
+		printf("INICIA TIEMPO:\n");
+relojin = clock();
+		int i,numero=1000,j,k,aux,min;
+
+	int *a=(int *)malloc(numero *sizeof(int));
+				for(i=0;i<numero;i++){
+			a[i]=rand()%10000;
+	printf(" \n%d",a[i]);
+	}
+	for(i=0;i<numero;i++){
+		min=i;
+		for(j=i+1;j<numero;j++){
+			if (a[j]<a[min]){
+				min=j;
+			}
+		}
+		aux=(int)a[i];
+		a[i]=a[min];
+		a[min]=(int)aux;
+	}
+		printf("\nEl arreglo es: ");
+		for(i=0;i<numero;i++){
+			printf("\n%d",a[i]);
+		}
+		relojin = clock() -relojin;
+printf("PARA TIEMPO:\n");
+printf("Numero de clicks %ld clicks (El metodo de seleccion tarda %f segundos)\n", relojin, ((float)relojin /CLOCKS_PER_SEC));
+}
